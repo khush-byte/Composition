@@ -70,14 +70,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/start_btn"
+            android:id="@+id/button_understand"
             android:layout_width="wrap_content"
             android:layout_height="56dp"
             android:layout_marginBottom="24dp"
             android:backgroundTint="@color/teal_200"
             android:fontFamily="sans-serif-light"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
+            android:paddingStart="36dp"
+            android:paddingEnd="36dp"
             android:text="ПОНЯТНО"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
