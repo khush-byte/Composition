@@ -6,28 +6,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.composition.R
 
-class WelcomeFragment: Fragment() {
-
+class ChooseLevelFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_welcome, container, false)
+        return inflater.inflate(R.layout.fragment_choose_level, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val buttonStart = view.findViewById<Button>(R.id.start_btn)
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        val buttonTestLevel = view.findViewById<Button>(R.id.btn_test_level)
 
-        buttonStart.setOnClickListener {
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        buttonTestLevel.setOnClickListener{
             transaction.addToBackStack(null)
-            transaction.replace(R.id.fragmentContainerView, ChooseLevelFragment())
+            transaction.replace(R.id.fragmentContainerView, GameFragment())
             transaction.commit()
         }
+
+
+
+
     }
 }
