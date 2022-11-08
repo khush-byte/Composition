@@ -131,9 +131,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
+        <Button
             android:id="@+id/tv_option_2"
-            style="@style/OptionTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#FFC107"
@@ -149,9 +148,8 @@
             app:layout_constraintStart_toEndOf="@+id/tv_option_1"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <Button
             android:id="@+id/tv_option_3"
-            style="@style/OptionTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#9C27B0"
@@ -167,9 +165,8 @@
             app:layout_constraintStart_toEndOf="@+id/tv_option_2"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <Button
             android:id="@+id/tv_option_1"
-            style="@style/OptionTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#4CAF50"
@@ -185,9 +182,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <Button
             android:id="@+id/tv_option_4"
-            style="@style/OptionTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/teal_200"
@@ -203,9 +199,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_option_1" />
 
-        <TextView
+        <Button
             android:id="@+id/tv_option_5"
-            style="@style/OptionTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#FF5722"
@@ -221,9 +216,8 @@
             app:layout_constraintStart_toEndOf="@+id/tv_option_1"
             app:layout_constraintTop_toBottomOf="@+id/tv_option_2" />
 
-        <TextView
+        <Button
             android:id="@+id/tv_option_6"
-            style="@style/OptionTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#00BCD4"

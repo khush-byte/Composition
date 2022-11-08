@@ -1,18 +1,29 @@
 package com.example.composition.presentation
 
+import android.os.Binder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.composition.R
+import com.example.composition.data.GameRepositoryImpl
 import com.example.composition.databinding.FragmentGameBinding
 import com.example.composition.databinding.FragmentGameFinishedBinding
+import com.example.composition.domain.entity.GameResult
+import com.example.composition.domain.entity.Level
 
 class GameFragment: Fragment() {
+    private lateinit var level: Level
     private var _binding: FragmentGameBinding? = null
     private val binding: FragmentGameBinding
         get() = _binding ?: throw java.lang.RuntimeException("FragmentGameBinding == null")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        parseArgs()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,8 +34,48 @@ class GameFragment: Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val gameResult = GameResult(true, 5, 6, GameRepositoryImpl.getGameSettings(level))
+        //Set Action to option's buttons
+        with(binding) {
+            tvOption1.setOnClickListener { launchGameFinishedFragment(gameResult) }
+            tvOption2.setOnClickListener { launchGameFinishedFragment(gameResult) }
+            tvOption3.setOnClickListener { launchGameFinishedFragment(gameResult) }
+            tvOption4.setOnClickListener { launchGameFinishedFragment(gameResult) }
+            tvOption5.setOnClickListener { launchGameFinishedFragment(gameResult) }
+            tvOption6.setOnClickListener { launchGameFinishedFragment(gameResult) }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun parseArgs(){
+        requireArguments().getParcelable<Level>(KEY_LEVEL)?.let {
+            level = it
+        }
+    }
+
+    private fun launchGameFinishedFragment(gameResult: GameResult){
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, GameFinishedFragment.newInstance(gameResult))
+            .addToBackStack(null)
+            .commit()
+    }
+
+    //Factory method for set level as param to fragment
+    companion object{
+        const val NAME = "GameFragment"
+        private const val KEY_LEVEL = "level"
+        fun newInstance(level: Level): GameFragment{
+            return GameFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(KEY_LEVEL, level)
+                }
+            }
+        }
     }
 }

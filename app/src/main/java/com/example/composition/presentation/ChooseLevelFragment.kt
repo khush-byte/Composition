@@ -1,12 +1,15 @@
 package com.example.composition.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.composition.R
 import com.example.composition.databinding.FragmentChooseLevelBinding
+import com.example.composition.domain.entity.Level
+
 
 class ChooseLevelFragment : Fragment() {
     private var _binding: FragmentChooseLevelBinding? = null
@@ -24,17 +27,33 @@ class ChooseLevelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
 
-        binding.btnTestLevel.setOnClickListener {
-            transaction.addToBackStack(null)
-            transaction.replace(R.id.fragmentContainerView, GameFragment())
-            transaction.commit()
+        //Apply setOnClickListener over buttons
+        with(binding) {
+            btnTestLevel.setOnClickListener { launchGameFragment(Level.TEST) }
+            btnEasyLevel.setOnClickListener { launchGameFragment(Level.EASY) }
+            btnNormalLevel.setOnClickListener { launchGameFragment(Level.NORMAL) }
+            btnHardLevel.setOnClickListener { launchGameFragment(Level.HARD) }
         }
+    }
+
+    private fun launchGameFragment(level: Level) {
+        Log.d("MyTestLog", level.name)
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, GameFragment.newInstance(level))
+            .addToBackStack(GameFragment.NAME)
+            .commit()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        const val NAME = "ChooseLevelFragment"
+        fun newInstance(): ChooseLevelFragment {
+            return ChooseLevelFragment()
+        }
     }
 }
