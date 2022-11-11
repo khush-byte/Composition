@@ -27,7 +27,7 @@ class ChooseLevelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as MainActivity?)?.playSoundtrack(true)
         //Apply setOnClickListener over buttons
         with(binding) {
             btnTestLevel.setOnClickListener { launchGameFragment(Level.TEST) }
@@ -38,7 +38,7 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun launchGameFragment(level: Level) {
-        Log.d("MyTestLog", level.name)
+        //Log.d("MyTestLog", level.name)
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, GameFragment.newInstance(level))
             .addToBackStack(GameFragment.NAME)

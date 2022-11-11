@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_field"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,43 +12,39 @@
         android:id="@+id/tv_timer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:textColor="@color/purple_700"
         android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="00:00"/>
+        tools:text="00:00" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_timer">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_sum"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="123dp"
+            android:layout_height="123dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="#0D7EE1"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="50sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
@@ -55,30 +52,41 @@
 
         <TextView
             android:id="@+id/tv_left_number"
-            android:layout_width="115dp"
-            android:layout_height="0dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
             android:background="#009688"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="46sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/tv_question"
+            app:layout_constraintEnd_toStartOf="@+id/tv_plus"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sum"
             tools:text="1" />
 
         <TextView
+            android:id="@+id/tv_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/purple_700"
+            android:textSize="46sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
+            app:layout_constraintEnd_toStartOf="@+id/tv_question"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_left_number"
+            app:layout_constraintTop_toTopOf="@+id/tv_left_number" />
+
+        <TextView
             android:id="@+id/tv_question"
-            android:layout_width="115dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:background="#009688"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
@@ -87,8 +95,24 @@
             android:textSize="46sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_plus"
+            app:layout_constraintTop_toTopOf="@+id/tv_left_number" />
+
+        <TextView
+            android:id="@+id/tv_equals"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/purple_700"
+            android:textSize="46sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
+            app:layout_constraintEnd_toStartOf="@+id/tv_question"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/tv_left_number"
             app:layout_constraintTop_toTopOf="@+id/tv_left_number" />
 
@@ -98,11 +122,11 @@
         android:id="@+id/tv_answers_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-light"
-        android:text="СОСТАВ ЧИСЛА"
+        android:text="СЛОЖИ ЧИСЛА"
         android:textColor="@color/purple_700"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -111,25 +135,29 @@
 
     <ProgressBar
         android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="#ADB1B1"
+        android:progressTint="@color/teal_700"
         android:secondaryProgressTint="@android:color/background_dark"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_answers_progress" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
-        android:layout_height="240dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2">
 
         <Button
             android:id="@+id/tv_option_2"
@@ -190,7 +218,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:text="1"
-            android:textColor="@color/white"
+            android:textColor="#5E35B1"
             android:textSize="42sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -234,5 +262,12 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_option_3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
