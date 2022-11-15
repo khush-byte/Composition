@@ -9,6 +9,7 @@ import com.example.composition.R
 class MainActivity : AppCompatActivity() {
     private lateinit var player: MediaPlayer
     private var currentPos = 0
+    var isMuted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

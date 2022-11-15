@@ -12,20 +12,25 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
+import androidx.navigation.fragment.findNavController
 import com.example.composition.R
 import com.example.composition.databinding.FragmentGameBinding
 import com.example.composition.domain.entity.GameResult
 import com.example.composition.domain.entity.Level
+import com.example.composition.presentation.GameFinishedFragment.Companion.KEY_GAME_RESULT
 import kotlin.random.Random
 
 
 class GameFragment : Fragment() {
     private lateinit var level: Level
+    private val viewModelFactory by lazy {
+        GameViewModelFactory(level, requireActivity().application)
+    }
     private val viewModel: GameViewModel by lazy {
         ViewModelProvider(
             this,
-            AndroidViewModelFactory.getInstance(requireActivity().application)
+            //AndroidViewModelFactory.getInstance(requireActivity().application)
+            viewModelFactory
         )[GameViewModel::class.java]
     }
     private val tvOptions by lazy {
@@ -59,9 +64,10 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
-        viewModel.startGame(level)
         setClickListenersToOptions()
-        (activity as MainActivity?)?.playSoundtrack(false)
+        val activity = (activity as MainActivity)
+        activity.playSoundtrack(false)
+        viewModel.setSoundtrack(activity.isMuted)
     }
 
     private fun setClickListenersToOptions() {
@@ -137,18 +143,25 @@ class GameFragment : Fragment() {
     }
 
     private fun launchGameFinishedFragment(gameResult: GameResult) {
-        requireActivity().supportFragmentManager.beginTransaction()
+        /*requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, GameFinishedFragment.newInstance(gameResult))
             .addToBackStack(null)
-            .commit()
+            .commit()*/
+        val args = Bundle().apply {
+            putParcelable(KEY_GAME_RESULT, gameResult)
+        }
+        findNavController().navigate(R.id.action_gameFragment_to_gameFinishedFragment, args)
     }
 
     private fun setRedAlert() {
-
-        val mColors = arrayOf(ColorDrawable(ContextCompat.getColor(
-            requireContext(),
-            android.R.color.holo_red_light
-        )), ColorDrawable(Color.WHITE))
+        val mColors = arrayOf(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    requireContext(),
+                    android.R.color.holo_red_light
+                )
+            ), ColorDrawable(Color.WHITE)
+        )
         val mTransition = TransitionDrawable(mColors)
         binding.tvField.background = mTransition
         mTransition.startTransition(500)
@@ -157,7 +170,7 @@ class GameFragment : Fragment() {
     //Factory method for set level as param to fragment
     companion object {
         const val NAME = "GameFragment"
-        private const val KEY_LEVEL = "level"
+        const val KEY_LEVEL = "level"
         fun newInstance(level: Level): GameFragment {
             return GameFragment().apply {
                 arguments = Bundle().apply {

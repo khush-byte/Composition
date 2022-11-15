@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
 import com.example.composition.R
 import com.example.composition.databinding.FragmentGameFinishedBinding
 import com.example.composition.domain.entity.GameResult
@@ -33,7 +34,10 @@ class GameFinishedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity?)?.playSoundtrack(true)
+        val activity = (activity as MainActivity)
+        if (!activity.isMuted) {
+            activity.playSoundtrack(true)
+        }
         bindViews()
         setupClickListeners()
     }
@@ -47,12 +51,12 @@ class GameFinishedFragment : Fragment() {
 
     private fun setupClickListeners() {
         //Set onBackPressed logic as retry the game
-        val callback = object : OnBackPressedCallback(true) {
+        /*val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 retryGame()
             }
         }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)*/
         binding.buttonRetry.setOnClickListener {
             retryGame()
         }
@@ -86,10 +90,11 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun retryGame() {
-        requireActivity().supportFragmentManager.popBackStack(
+        /*requireActivity().supportFragmentManager.popBackStack(
             GameFragment.NAME,
             FragmentManager.POP_BACK_STACK_INCLUSIVE
-        )
+        )*/
+        findNavController().popBackStack()
     }
 
     private fun getPercentOfRightAnswers() = with(gameResult) {
@@ -107,7 +112,7 @@ class GameFinishedFragment : Fragment() {
 
     //Factory method for set level as param to fragment
     companion object {
-        private const val KEY_GAME_RESULT = "game_result"
+        const val KEY_GAME_RESULT = "game_result"
         fun newInstance(gameResult: GameResult): GameFinishedFragment {
             return GameFinishedFragment().apply {
                 arguments = Bundle().apply {

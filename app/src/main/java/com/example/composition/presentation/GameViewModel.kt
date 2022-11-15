@@ -3,9 +3,9 @@ package com.example.composition.presentation
 import android.app.Application
 import android.media.MediaPlayer
 import android.os.CountDownTimer
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.composition.R
 import com.example.composition.data.GameRepositoryImpl
 import com.example.composition.domain.entity.GameResult
@@ -15,17 +15,18 @@ import com.example.composition.domain.entity.Question
 import com.example.composition.domain.usecases.GenerateQuestionUseCase
 import com.example.composition.domain.usecases.GetGameSettingsUseCase
 
+class GameViewModel(
+    private val application: Application,
+    private val level: Level
+) : ViewModel() {
 
-class GameViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var gameSettings: GameSettings
-    private lateinit var level: Level
-    private val context = application
     private val repository = GameRepositoryImpl
     private val generateQuestionUseCase = GenerateQuestionUseCase(repository)
     private val getGameSettingsUseCase = GetGameSettingsUseCase(repository)
     private var timer: CountDownTimer? = null
-    private var mPlayer = MediaPlayer.create(context, R.raw.wrong)
-    private var clickSoundEffect = MediaPlayer.create(context, R.raw.wrong)
+    private var mPlayer = MediaPlayer.create(application, R.raw.wrong)
+    private var clickSoundEffect = MediaPlayer.create(application, R.raw.wrong)
 
     private val _formattedTime = MutableLiveData<String>()
     val formattedTime: LiveData<String>
@@ -67,12 +68,15 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private var countOfQuestions = 0
     private var percent = 0
 
-    fun startGame(level: Level) {
-        getGameSettings(level)
+    init {
+        startGame()
+    }
+
+    private fun startGame() {
+        getGameSettings()
         startTimer()
         generateQuestion()
         updateProgress()
-        setSoundtrack(level)
     }
 
     fun chooseAnswer(number: Int) {
@@ -81,22 +85,24 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         generateQuestion()
     }
 
-    private fun setSoundtrack(level: Level){
-        mPlayer = when (level) {
-            Level.TEST -> MediaPlayer.create(context, R.raw.level_test)
-            Level.EASY -> MediaPlayer.create(context, R.raw.level_easy)
-            Level.NORMAL -> MediaPlayer.create(context, R.raw.level_normal)
-            Level.HARD -> MediaPlayer.create(context, R.raw.level_hard)
+    fun setSoundtrack(isMuted: Boolean) {
+        if (!isMuted) {
+            mPlayer = when (level) {
+                Level.TEST -> MediaPlayer.create(application, R.raw.level_test)
+                Level.EASY -> MediaPlayer.create(application, R.raw.level_easy)
+                Level.NORMAL -> MediaPlayer.create(application, R.raw.level_normal)
+                Level.HARD -> MediaPlayer.create(application, R.raw.level_hard)
+            }
+            mPlayer.isLooping = true
+            mPlayer.start()
         }
-        mPlayer.isLooping = true
-        mPlayer.start()
     }
 
     private fun updateProgress() {
         percent = calculatePercentOfRightAnswers()
         _percentOfRightAnswers.value = percent
         _progressAnswers.value = String.format(
-            context.resources.getString(R.string.progress_answers),
+            application.resources.getString(R.string.progress_answers),
             countOfRightAnswers,
             gameSettings.minCountOfRightAnswers
         )
@@ -105,7 +111,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun calculatePercentOfRightAnswers(): Int {
-        if(countOfQuestions == 0){
+        if (countOfQuestions == 0) {
             return 0
         }
         return ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
@@ -116,18 +122,17 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         clickSoundEffect.stop()
         if (number == rightAnswer) {
             countOfRightAnswers++
-            clickSoundEffect = MediaPlayer.create(context, R.raw.correct)
+            clickSoundEffect = MediaPlayer.create(application, R.raw.correct)
             clickSoundEffect.start()
-        }else{
+        } else {
             _countOfIncorrectAnswers.value = countOfIncorrectAnswers.value?.plus(1)
-            clickSoundEffect = MediaPlayer.create(context, R.raw.wrong)
+            clickSoundEffect = MediaPlayer.create(application, R.raw.wrong)
             clickSoundEffect.start()
         }
         countOfQuestions++
     }
 
-    private fun getGameSettings(level: Level) {
-        this.level = level
+    private fun getGameSettings() {
         this.gameSettings = getGameSettingsUseCase(level)
         _minPercent.value = gameSettings.minPercentOgRightAnswers
     }
@@ -140,6 +145,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             override fun onTick(millisUntilFinished: Long) {
                 _formattedTime.value = formatTime(millisUntilFinished)
             }
+
             override fun onFinish() {
                 finishGame()
             }
