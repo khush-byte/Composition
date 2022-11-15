@@ -1,6 +1,5 @@
 package com.example.composition.presentation
 
-import android.os.Binder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.composition.R
 import com.example.composition.databinding.FragmentChooseLevelBinding
 import com.example.composition.domain.entity.Level
-import com.example.composition.presentation.GameFragment.Companion.KEY_LEVEL
 
 
 class ChooseLevelFragment : Fragment() {
@@ -63,10 +61,14 @@ class ChooseLevelFragment : Fragment() {
             .replace(R.id.main_container, GameFragment.newInstance(level))
             .addToBackStack(GameFragment.NAME)
             .commit()*/
-        val args = Bundle().apply {
+        /*val args = Bundle().apply {
             putParcelable(KEY_LEVEL, level)
         }
-        findNavController().navigate(R.id.action_chooseLevelFragment_to_gameFragment, args)
+        findNavController().navigate(R.id.action_chooseLevelFragment_to_gameFragment, args)*/
+
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
+        )
     }
 
     override fun onDestroy() {
@@ -74,10 +76,10 @@ class ChooseLevelFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
+    /*companion object {
         const val NAME = "ChooseLevelFragment"
         fun newInstance(): ChooseLevelFragment {
             return ChooseLevelFragment()
         }
-    }
+    }*/
 }
