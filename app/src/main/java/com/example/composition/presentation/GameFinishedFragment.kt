@@ -37,7 +37,7 @@ class GameFinishedFragment : Fragment() {
         if (!activity.isMuted) {
             activity.playSoundtrack(true)
         }
-        bindViews()
+        binding.gameResult = args.gameResult
         setupClickListeners()
     }
 
@@ -61,32 +61,34 @@ class GameFinishedFragment : Fragment() {
         }
     }
 
-    private fun bindViews() {
-        with(binding) {
-            emojiResult.setImageResource(getSmileResId())
-            tvRequiredAnswers.text = String.format(
-                getString(R.string.required_score), args.gameResult.gameSettings.minCountOfRightAnswers
-            )
-            tvScoreAnswers.text = String.format(
-                getString(R.string.score_answers), args.gameResult.countOfRightAnswers
-            )
-            tvRequiredPercentage.text = String.format(
-                getString(R.string.required_percentage),
-                args.gameResult.gameSettings.minPercentOgRightAnswers
-            )
-            tvScorePercentage.text = String.format(
-                getString(R.string.score_percentage), getPercentOfRightAnswers()
-            )
-        }
-    }
+//    private fun bindViews() {
+//        binding.gameResult = args.gameResult
+//        //binding.emojiResult.setImageResource(getSmileResId())
+////        with(binding) {
+////            emojiResult.setImageResource(getSmileResId())
+////            tvRequiredAnswers.text = String.format(
+////                getString(R.string.required_score), args.gameResult.gameSettings.minCountOfRightAnswers
+////            )
+////            tvScoreAnswers.text = String.format(
+////                getString(R.string.score_answers), args.gameResult.countOfRightAnswers
+////            )
+////            tvRequiredPercentage.text = String.format(
+////                getString(R.string.required_percentage),
+////                args.gameResult.gameSettings.minPercentOgRightAnswers
+////            )
+////            tvScorePercentage.text = String.format(
+////                getString(R.string.score_percentage), getPercentOfRightAnswers()
+////            )
+////        }
+//    }
 
-    private fun getSmileResId(): Int {
-        return if (args.gameResult.winner) {
-            R.drawable.ic_smile
-        } else {
-            R.drawable.ic_sad
-        }
-    }
+//    private fun getSmileResId(): Int {
+//        return if (args.gameResult.winner) {
+//            R.drawable.ic_smile
+//        } else {
+//            R.drawable.ic_sad
+//        }
+//    }
 
     private fun retryGame() {
         /*requireActivity().supportFragmentManager.popBackStack(
@@ -96,13 +98,13 @@ class GameFinishedFragment : Fragment() {
         findNavController().popBackStack()
     }
 
-    private fun getPercentOfRightAnswers() = with(args.gameResult) {
-        if (countOfQuestions == 0) {
-            0
-        } else {
-            args.gameResult.percentOfRightAnswers
-        }
-    }
+//    private fun getPercentOfRightAnswers() = with(args.gameResult) {
+//        if (countOfQuestions == 0) {
+//            0
+//        } else {
+//            args.gameResult.percentOfRightAnswers
+//        }
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

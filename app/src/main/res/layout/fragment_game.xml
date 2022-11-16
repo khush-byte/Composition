@@ -1,273 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tv_field"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".presentation.ChooseLevelFragment">
-
-    <TextView
-        android:id="@+id/tv_timer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:textColor="@color/purple_700"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="00:00" />
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/tv_field"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".presentation.ChooseLevelFragment">
 
         <TextView
-            android:id="@+id/tv_sum"
-            android:layout_width="123dp"
-            android:layout_height="123dp"
-            android:background="@drawable/circle_background"
+            android:id="@+id/tv_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="50sp"
+            android:textColor="@color/purple_700"
+            android:textSize="34sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="1" />
+            tools:text="00:00" />
 
-        <TextView
-            android:id="@+id/tv_left_number"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="24dp"
-            android:background="#009688"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="46sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tv_plus"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sum"
-            tools:text="1" />
-
-        <TextView
-            android:id="@+id/tv_plus"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="+"
-            android:textColor="@color/purple_700"
-            android:textSize="46sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
-            app:layout_constraintEnd_toStartOf="@+id/tv_question"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_left_number"
-            app:layout_constraintTop_toTopOf="@+id/tv_left_number" />
-
-        <TextView
-            android:id="@+id/tv_question"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:background="#009688"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="@string/question_mark"
-            android:textColor="@color/white"
-            android:textSize="46sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_plus"
-            app:layout_constraintTop_toTopOf="@+id/tv_left_number" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_sum"
+                android:layout_width="123dp"
+                android:layout_height="123dp"
+                android:background="@drawable/circle_background"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/tv_left_number"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="24dp"
+                android:background="#009688"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="46sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sum"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="#009688"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/question_mark"
+                android:textColor="@color/white"
+                android:textSize="46sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_left_number" />
+
+            <TextView
+                android:id="@+id/tv_equals"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/plus_symbol"
+                android:textColor="@color/purple_700"
+                android:textSize="46sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
+                app:layout_constraintEnd_toStartOf="@+id/tv_question"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_left_number"
+                app:layout_constraintTop_toTopOf="@+id/tv_left_number" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tv_equals"
-            android:layout_width="40dp"
+            android:id="@+id/tv_answers_progress"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="+"
+            android:text=""
             android:textColor="@color/purple_700"
-            android:textSize="46sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
-            app:layout_constraintEnd_toStartOf="@+id/tv_question"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_left_number"
-            app:layout_constraintTop_toTopOf="@+id/tv_left_number" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tv_answers_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="sans-serif-light"
-        android:text="СЛОЖИ ЧИСЛА"
-        android:textColor="@color/purple_700"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/progress_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:max="100"
-        android:progress="0"
-        android:progressBackgroundTint="#ADB1B1"
-        android:progressTint="@color/teal_700"
-        android:secondaryProgressTint="@android:color/background_dark"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2">
-
-        <Button
-            android:id="@+id/tv_option_2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#FFC107"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="#D81B60"
-            android:textSize="42sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@+id/tv_option_5"
-            app:layout_constraintEnd_toStartOf="@+id/tv_option_3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_option_1"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/tv_option_3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#9C27B0"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/white"
-            android:textSize="42sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@+id/tv_option_6"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_option_2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/tv_option_1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#4CAF50"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="#0D47A1"
-            android:textSize="42sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@+id/tv_option_4"
-            app:layout_constraintEnd_toStartOf="@+id/tv_option_2"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-        <Button
-            android:id="@+id/tv_option_4"
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"
+            android:progressBackgroundTint="#ADB1B1"
+            android:progressTint="@color/teal_700"
+            android:secondaryProgressTint="@android:color/background_dark"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/teal_200"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="#5E35B1"
-            android:textSize="42sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_option_2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_option_1" />
-
-        <Button
-            android:id="@+id/tv_option_5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#FF5722"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/white"
-            android:textSize="42sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_option_3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_option_1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_option_2" />
-
-        <Button
-            android:id="@+id/tv_option_6"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#00BCD4"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="#455A64"
-            android:textSize="42sp"
-            android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_option_2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_option_3" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+            <Button
+                android:id="@+id/tv_option_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#FFC107"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/number_1"
+                android:textColor="#D81B60"
+                android:textSize="42sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/tv_option_5"
+                app:layout_constraintEnd_toStartOf="@+id/tv_option_3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_option_1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/tv_option_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#9C27B0"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/number_1"
+                android:textColor="@color/white"
+                android:textSize="42sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/tv_option_6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_option_2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/tv_option_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#4CAF50"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/number_1"
+                android:textColor="#0D47A1"
+                android:textSize="42sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/tv_option_4"
+                app:layout_constraintEnd_toStartOf="@+id/tv_option_2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/tv_option_4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/teal_200"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/number_1"
+                android:textColor="#5E35B1"
+                android:textSize="42sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_option_2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_option_1" />
+
+            <Button
+                android:id="@+id/tv_option_5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#FF5722"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/number_1"
+                android:textColor="@color/white"
+                android:textSize="42sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_option_3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_option_1"
+                app:layout_constraintTop_toBottomOf="@+id/tv_option_2" />
+
+            <Button
+                android:id="@+id/tv_option_6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#00BCD4"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/number_1"
+                android:textColor="#455A64"
+                android:textSize="42sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_option_2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_option_3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.67" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.67" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
