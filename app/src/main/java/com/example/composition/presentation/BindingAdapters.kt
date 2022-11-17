@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.example.composition.R
 
+//Functional interface for click to get button text
 interface OnOptionClickListener {
     fun onOptionClick(option: Int)
 }

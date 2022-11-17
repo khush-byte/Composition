@@ -10,7 +10,7 @@ import com.example.composition.R
 import com.example.composition.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
-    //Use the Binding (link)
+    //Use the binding
     private var _binding: FragmentWelcomeBinding? = null
     private val binding: FragmentWelcomeBinding
         get() = _binding ?: throw RuntimeException("FragmentWelcomeBinding == null")
@@ -29,15 +29,12 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonUnderstand.setOnClickListener {
-           launchChooseLevelFragment()
+            launchChooseLevelFragment()
         }
     }
 
-    private fun launchChooseLevelFragment(){
-        /*requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, ChooseLevelFragment.newInstance())
-            .addToBackStack(ChooseLevelFragment.NAME)
-            .commit()*/
+    private fun launchChooseLevelFragment() {
+        //Use jetpack navigation
         findNavController().navigate(R.id.action_welcomeFragment_to_chooseLevelFragment)
     }
 

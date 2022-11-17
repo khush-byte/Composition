@@ -1,14 +1,8 @@
 package com.example.composition.presentation
 
 import android.app.Application
-import android.content.res.ColorStateList
 import android.media.MediaPlayer
 import android.os.CountDownTimer
-import android.widget.ProgressBar
-import android.widget.TextView
-import androidx.compose.ui.graphics.Color
-import androidx.core.content.ContextCompat
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -92,7 +86,7 @@ class GameViewModel(
         generateQuestion()
     }
 
-    fun setSoundtrack(isMuted: Boolean) {
+    fun launchSoundtrack(isMuted: Boolean) {
         if (!isMuted) {
             mPlayer = when (level) {
                 Level.TEST -> MediaPlayer.create(application, R.raw.level_test)

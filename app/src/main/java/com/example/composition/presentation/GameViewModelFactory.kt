@@ -11,7 +11,7 @@ class GameViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(GameViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(GameViewModel::class.java)) {
             return GameViewModel(application, level) as T
         }
         throw RuntimeException("Unknown view model class $modelClass")

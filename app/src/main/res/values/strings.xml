@@ -25,7 +25,7 @@
     <string name="progress_answers">Правильных ответов %s (минимум %s)</string>
     <string name="try_again">ПОПРОБОВАТЬ СНОВА</string>
     <string name="app_title">THE MATH GAME</string>
-    <string name="number_1">1</string>
+    <string name="def_number">1</string>
     <string name="plus_symbol">+</string>
     <string name="good">ПОНЯТНО</string>
 </resources>

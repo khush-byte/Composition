@@ -10,7 +10,6 @@ import com.example.composition.R
 import com.example.composition.databinding.FragmentChooseLevelBinding
 import com.example.composition.domain.entity.Level
 
-
 class ChooseLevelFragment : Fragment() {
     private var _binding: FragmentChooseLevelBinding? = null
     private val binding: FragmentChooseLevelBinding
@@ -28,8 +27,6 @@ class ChooseLevelFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val activity = (activity as MainActivity)
-        //Apply setOnClickListener over buttons
-        //Log.d("MyTestLog", activity.isMuted.toString())
         with(binding) {
             btnTestLevel.setOnClickListener { launchGameFragment(Level.TEST) }
             btnEasyLevel.setOnClickListener { launchGameFragment(Level.EASY) }
@@ -56,16 +53,6 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun launchGameFragment(level: Level) {
-        //Log.d("MyTestLog", level.name)
-        /*requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, GameFragment.newInstance(level))
-            .addToBackStack(GameFragment.NAME)
-            .commit()*/
-        /*val args = Bundle().apply {
-            putParcelable(KEY_LEVEL, level)
-        }
-        findNavController().navigate(R.id.action_chooseLevelFragment_to_gameFragment, args)*/
-
         findNavController().navigate(
             ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
         )
@@ -75,11 +62,4 @@ class ChooseLevelFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
-    /*companion object {
-        const val NAME = "ChooseLevelFragment"
-        fun newInstance(): ChooseLevelFragment {
-            return ChooseLevelFragment()
-        }
-    }*/
 }
