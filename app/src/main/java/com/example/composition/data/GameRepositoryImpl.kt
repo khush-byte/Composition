@@ -18,7 +18,7 @@ object GameRepositoryImpl : GameRepository {
         //Visible part
         val visibleNumber = Random.nextInt(MIN_ANSWER_VALUE, sum)
         //Various answer options
-        val options = HashSet<Int>()
+        var options = HashSet<Int>()
         val rightAnswer = sum - visibleNumber
         //Add right answer to option's list
         options.add(rightAnswer)
@@ -28,7 +28,15 @@ object GameRepositoryImpl : GameRepository {
         while (options.size < countOfOptions) {
             options.add(Random.nextInt(from, to))
         }
-        return Question(sum, visibleNumber, options.toList())
+        //Mix items in array
+        val tempArray = ArrayList(options)
+        for (i in 0..tempArray.size) {
+            val randomIndex = Random.nextInt(0, tempArray.size)
+            val itemToMove = tempArray[randomIndex]
+            tempArray.remove(itemToMove);
+            tempArray.add(0, itemToMove);
+        }
+        return Question(sum, visibleNumber, tempArray)
     }
 
     override fun getGameSettings(level: Level): GameSettings {
@@ -54,7 +62,7 @@ object GameRepositoryImpl : GameRepository {
                     20,
                     20,
                     80,
-                    40
+                    60
                 )
             }
             Level.HARD -> {
@@ -62,7 +70,7 @@ object GameRepositoryImpl : GameRepository {
                     30,
                     30,
                     90,
-                    40
+                    60
                 )
             }
         }

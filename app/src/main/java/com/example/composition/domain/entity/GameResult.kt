@@ -2,7 +2,6 @@ package com.example.composition.domain.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import java.io.Serializable
 
 //The entity of the result of the game
 @Parcelize
@@ -12,4 +11,4 @@ data class GameResult(
     val countOfQuestions: Int,
     val percentOfRightAnswers: Int,
     val gameSettings: GameSettings
-): Parcelable
+) : Parcelable

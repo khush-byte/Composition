@@ -1,8 +1,14 @@
 package com.example.composition.presentation
 
 import android.app.Application
+import android.content.res.ColorStateList
 import android.media.MediaPlayer
 import android.os.CountDownTimer
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.compose.ui.graphics.Color
+import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +32,8 @@ class GameViewModel(
     private val getGameSettingsUseCase = GetGameSettingsUseCase(repository)
     private var timer: CountDownTimer? = null
     private var mPlayer = MediaPlayer.create(application, R.raw.wrong)
-    private var clickSoundEffect = MediaPlayer.create(application, R.raw.wrong)
+    private var clickSoundEffectWrong = MediaPlayer.create(application, R.raw.wrong)
+    private var clickSoundEffectRight = MediaPlayer.create(application, R.raw.correct)
 
     private val _formattedTime = MutableLiveData<String>()
     val formattedTime: LiveData<String>
@@ -66,7 +73,7 @@ class GameViewModel(
 
     private var countOfRightAnswers = 0
     private var countOfQuestions = 0
-    private var percent = 0
+    var percent = 0
 
     init {
         startGame()
@@ -119,15 +126,22 @@ class GameViewModel(
 
     private fun checkAnswer(number: Int) {
         val rightAnswer = question.value?.rightAnswer
-        clickSoundEffect.stop()
         if (number == rightAnswer) {
             countOfRightAnswers++
-            clickSoundEffect = MediaPlayer.create(application, R.raw.correct)
-            clickSoundEffect.start()
+            if (!clickSoundEffectRight.isPlaying){
+                clickSoundEffectRight.start();
+            }else{
+                clickSoundEffectRight.seekTo(0);
+                clickSoundEffectRight.start();
+            }
         } else {
             _countOfIncorrectAnswers.value = countOfIncorrectAnswers.value?.plus(1)
-            clickSoundEffect = MediaPlayer.create(application, R.raw.wrong)
-            clickSoundEffect.start()
+            if (!clickSoundEffectWrong.isPlaying){
+                clickSoundEffectWrong.start();
+            }else{
+                clickSoundEffectWrong.seekTo(0);
+                clickSoundEffectWrong.start();
+            }
         }
         countOfQuestions++
     }
