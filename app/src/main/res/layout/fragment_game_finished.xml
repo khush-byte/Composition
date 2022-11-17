@@ -39,7 +39,7 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
-            android:textColor="#03A9F4"
+            android:textColor="@color/purple_700"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_score_answers"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +48,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             app:requiredAnswers="@{gameResult.gameSettings.minCountOfRightAnswers}"
+            tools:ignore="TextContrastCheck"
             tools:text="@string/required_score" />
 
         <TextView
@@ -59,7 +60,7 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
-            android:textColor="#03A9F4"
+            android:textColor="@color/purple_700"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_required_percentage"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,6 +68,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_required_answers"
             app:scoreAnswers="@{gameResult.countOfRightAnswers}"
+            tools:ignore="TextContrastCheck"
             tools:text="@string/score_answers" />
 
         <TextView
@@ -78,7 +80,7 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
-            android:textColor="#03A9F4"
+            android:textColor="@color/purple_700"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_score_percentage"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,6 +88,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_score_answers"
             app:requiredPercentage="@{gameResult.gameSettings.minPercentOgRightAnswers}"
+            tools:ignore="TextContrastCheck"
             tools:text="@string/required_percentage" />
 
         <TextView
@@ -97,7 +100,7 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
-            android:textColor="#03A9F4"
+            android:textColor="@color/purple_700"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/button_retry"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,6 +108,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_required_percentage"
             app:scorePercentage="@{gameResult.percentOfRightAnswers}"
+            tools:ignore="TextContrastCheck"
             tools:text="@string/score_percentage" />
 
         <Button
